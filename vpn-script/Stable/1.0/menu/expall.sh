@@ -1,0 +1,11 @@
+#!/bin/bash
+sshexp
+vmessexp
+vlessexp
+wgexp
+ssrexp
+trojanexp
+pptpexp
+l2tpexp
+sstpexp
+ssexp
