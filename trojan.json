@@ -1,0 +1,46 @@
+{
+    "log": {
+        "access": "/etc/GeoVPN/xray-logs/trojan-login.log",
+        "error": "/etc/GeoVPN/xray-logs/trojan-eror.log",
+        "loglevel": "info"
+    },
+    "inbounds": [
+        {
+            "port": 8443,
+            "protocol": "trojan",
+            "settings": {
+                "clients": [
+                    {
+                        "password": "5de369d0-e897-43f7-aa29-030284a70926"
+#XRay
+                    }
+                ]
+            },
+            "streamSettings": {
+                "network": "tcp",
+                "security": "tls",
+                "tlsSettings": {
+                    "alpn": [
+                        "http/1.1"
+                    ],
+                    "certificates": [
+                        {
+                            "certificateFile": "/data/ssl.crt",
+                            "keyFile": "/data/ssl.key"
+                        }
+                    ]
+                }
+            }
+        }
+    ],
+    "outbounds": [
+        {
+            "protocol": "freedom",
+            "tag": "direct"
+        },
+        {
+            "protocol": "blackhole",
+            "tag": "block"
+        }
+    ]
+}

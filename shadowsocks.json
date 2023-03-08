@@ -1,0 +1,35 @@
+{
+   "log": {
+      "access": "/etc/GeoVPN/xray-logs/shadowsocks-login.log",
+      "error": "/etc/GeoVPN/xray-logs/shadowsocks-eror.log",
+      "loglevel": "info"
+    },
+    "inbounds": [
+        {
+            "port": 2088,
+            "protocol": "shadowsocks",
+            "settings": {
+                "clients": [
+                  {
+                      "method": "chacha20-ietf-poly1305",
+                      "password": "5de369d0-e897-43f7-aa29-030284a70926"
+#XRay
+                  }
+              ]
+          },
+          "streamSettings": {
+              "network": "tcp"
+          }
+       }
+    ],
+    "outbounds": [
+        {
+            "protocol": "freedom",
+            "tag": "direct"
+        },
+        {
+            "protocol": "blackhole",
+            "tag": "block"
+        }
+    ]
+}

@@ -1,0 +1,42 @@
+{
+  "log": {
+    "access": "/etc/GeoVPN/xray-logs/vmess-login.log",
+    "error": "/etc/GeoVPN/xray-logs/vmess-eror.log",
+    "loglevel": "info"
+    },
+        "inbounds": [
+            {
+              "listen": "0.0.0.0",
+              "port": 2082,
+              "protocol": "vmess",
+              "settings": {
+                "clients": [
+                    {
+                        "id": "5de369d0-e897-43f7-aa29-030284a70926",
+                        "alterId":0
+#XRay
+                    }
+                ],
+        "disableInsecureEncryption": false,
+            "decryption": "none"
+        },
+        "streamSettings": {
+            "network": "ws",
+            "security": "none",
+            "wsSettings": {
+                "path": "/vmess" 
+            }
+        }
+    }
+],
+    "outbounds": [
+        {
+            "protocol": "freedom",
+            "tag": "direct"
+        },
+        {
+            "protocol": "blackhole",
+            "tag": "block"
+        }
+    ]
+}

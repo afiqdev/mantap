@@ -1,0 +1,65 @@
+{
+    "log": {
+       "access": "/etc/GeoVPN/xray-logs/vless-login.log",
+       "error": "/etc/GeoVPN/xray-logs/vless-eror.log",
+       "loglevel": "info"
+    },
+    "inbounds": [
+      {
+        "port": 2087,
+        "protocol": "vless",
+        "settings": {
+          "clients": [
+            {
+              "id": "5de369d0-e897-43f7-aa29-030284a70926",
+              "flow": "xtls-rprx-direct"
+#XRay
+            }
+          ],
+          "decryption": "none",
+          "fallbacks": [
+            {
+              "dest": 60000,
+              "alpn": "",
+              "xver": 1
+            },
+            {
+              "dest": 60001,
+              "alpn": "h2",
+              "xver": 1
+            }
+          ]
+        },
+        "streamSettings": {
+          "network": "tcp",
+          "security": "xtls",
+          "xtlsSettings": {
+            "minVersion": "1.2",
+            "certificates": [
+              {
+                "certificateFile": "/data/ssl.crt",
+                "keyFile": "/data/ssl.key"
+              }
+            ]
+          }
+        },
+        "sniffing": {
+          "enabled": true,
+          "destOverride": [
+            "http",
+            "tls"
+          ]
+        }
+      }
+    ],
+    "outbounds": [
+        {
+            "protocol": "freedom",
+            "tag": "direct"
+        },
+        {
+            "protocol": "blackhole",
+            "tag": "block"
+        }
+    ]
+}

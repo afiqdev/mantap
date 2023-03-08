@@ -1,0 +1,41 @@
+{
+    "log": {
+       "access": "/etc/GeoVPN/xray-logs/vless-login.log",
+       "error": "/etc/GeoVPN/xray-logs/vless-eror.log",
+       "loglevel": "info"
+    },
+        "inbounds": [
+            {
+              "listen": "0.0.0.0",
+              "port": 2086,
+              "protocol": "vless",
+              "settings": {
+                "clients": [
+                    {
+                        "id": "5de369d0-e897-43f7-aa29-030284a70926"
+#XRay
+                    }
+                ],
+        "disableInsecureEncryption": false,
+            "decryption": "none"
+        },
+        "streamSettings": {
+            "network": "ws",
+            "security": "none",
+            "wsSettings": {
+                "path": "/vless" 
+            }
+        }
+    }
+],
+    "outbounds": [
+        {
+            "protocol": "freedom",
+            "tag": "direct"
+        },
+        {
+            "protocol": "blackhole",
+            "tag": "block"
+        }
+    ]
+}
