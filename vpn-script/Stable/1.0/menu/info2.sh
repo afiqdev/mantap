@@ -45,51 +45,6 @@ export RED_BG='\e[41m'
 # // Exporting IP Address
 export IP=$( curl -sS ipinfo.io/ip )
 
-# // Function Start
-function license_check () {
-Algoritma_Keys="$( cat /etc/${Auther}/license.key )"
-Validated_Keys="$( curl -s https://${Server_URL}/mantap/validated-registered-license-key.txt | grep $Algoritma_Keys | cut -d ' ' -f 1 )"
-if [[ "$Algoritma_Keys" == "$Validated_Keys" ]]; then
-    if [[ $Algoritma_Keys == "" ]]; then
-        Skip="true"
-    else
-        Limit_License="$( curl -s https://${Server_URL}/mantap/validated-registered-license-key.txt | grep $Algoritma_Keys | cut -d ' ' -f 2 )"
-        Start_License="$( curl -s https://${Server_URL}/mantap/validated-registered-license-key.txt | grep $Algoritma_Keys | cut -d ' ' -f 3 )"
-        End_License="$( curl -s https://${Server_URL}/mantap/validated-registered-license-key.txt | grep $Algoritma_Keys | cut -d ' ' -f 4 )"
-        Bot="$( curl -s https://${Server_URL}/mantap/validated-registered-license-key.txt | grep $Algoritma_Keys | cut -d ' ' -f 5 )"
-        Backup="$( curl -s https://${Server_URL}/mantap/validated-registered-license-key.txt | grep $Algoritma_Keys | cut -d ' ' -f 6 )"
-        Beta="$( curl -s https://${Server_URL}/mantap/validated-registered-license-key.txt | grep $Algoritma_Keys | cut -d ' ' -f 7 )"
-        Tipe="$( curl -s https://${Server_URL}/mantap/validated-registered-license-key.txt | grep $Algoritma_Keys | cut -d ' ' -f 8 )"
-        Issue_License="$( curl -s https://${Server_URL}/mantap/validated-registered-license-key.txt | grep $Algoritma_Keys | cut -d ' ' -f 9-100 )"
-    fi
-    exp=$( curl -s https://${Server_URL}/mantap/validated-registered-license-key.txt | grep $Algoritma_Keys | cut -d ' ' -f 4 )
-    now=`date -d "0 days" +"%Y-%m-%d"`
-    d1=$(date -d "$exp" +%s)
-    d2=$(date -d "$now" +%s)
-    Sisa_Hari=$(( (d1 - d2) / 86400 ))
-    Status_License="Activated"
-else
-    if [[ $Algoritma_Keys == "" ]]; then
-        Skip="true"
-    else
-        Limit_License="$( curl -s https://${Server_URL}/mantap/validated-registered-license-key.txt | grep $Algoritma_Keys | cut -d ' ' -f 2 )"
-        Start_License="$( curl -s https://${Server_URL}/mantap/validated-registered-license-key.txt | grep $Algoritma_Keys | cut -d ' ' -f 3 )"
-        End_License="$( curl -s https://${Server_URL}/mantap/validated-registered-license-key.txt | grep $Algoritma_Keys | cut -d ' ' -f 4 )"
-        Bot="$( curl -s https://${Server_URL}/mantap/validated-registered-license-key.txt | grep $Algoritma_Keys | cut -d ' ' -f 5 )"
-        Backup="$( curl -s https://${Server_URL}/mantap/validated-registered-license-key.txt | grep $Algoritma_Keys | cut -d ' ' -f 6 )"
-        Beta="$( curl -s https://${Server_URL}/mantap/validated-registered-license-key.txt | grep $Algoritma_Keys | cut -d ' ' -f 7 )"
-        Tipe="$( curl -s https://${Server_URL}/mantap/validated-registered-license-key.txt | grep $Algoritma_Keys | cut -d ' ' -f 8 )"
-        Issue_License="$( curl -s https://${Server_URL}/mantap/validated-registered-license-key.txt | grep $Algoritma_Keys | cut -d ' ' -f 9-100 )"
-    fi
-    Status_License="Not Activated"
-fi
-}
-
-function script_version () {
-        SC_Version="$( cat /etc/${Auther}/version.db )"
-        Latest="$( curl -s https://${Server_URL}/mantap/bot/Latest-Version.txt )"
-}
-
 function os_detail () {
     OS_Name="$( cat /etc/os-release | grep -w ID | head -n1 | sed 's/ID//g' | sed 's/=//g' )"
     OS_FName="$( cat /etc/os-release | grep -w PRETTY_NAME | head -n1 | sed 's/PRETTY_NAME//g' | sed 's/=//g' | sed 's/"//g' | sed 's/,//g'  )"
