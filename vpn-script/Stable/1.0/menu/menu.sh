@@ -56,17 +56,6 @@ export NETWORK_IFACE="$(ip route show to default | awk '{print $5}')"
 # // Exporting RED BG
 export RED_BG='\e[41m'
 
-# // Exporting Addons Tools
-export End_License=$( curl -s https://${Server_URL}/mantap/validated-registered-license-key.txt | grep -w $Your_License_Key | cut -d ' ' -f 4 | awk '{print $1}' );
-export Start_License=$( curl -s https://${Server_URL}/mantap/validated-registered-license-key.txt | grep -w $Your_License_Key | cut -d ' ' -f 3 | awk '{print $1}' );
-export Issue_License=$( curl -s https://${Server_URL}/mantap/validated-registered-license-key.txt | grep -w $Your_License_Key | cut -d ' ' -f 9-100 | awk '{print $1}' );
-export Limit_License=$( curl -s https://${Server_URL}/mantap/validated-registered-license-key.txt | grep -w $Your_License_Key | cut -d ' ' -f 2 | awk '{print $1}' );
-export Sekarang=`date -d "0 days" +"%Y-%m-%d"`
-export Tanggal_Expired_Dalam_Hitungan_Detik=$(date -d "$End_License" +%s)
-export Tanggal_Sekarang_Dalam_Hitungan_Detik=$(date -d "$Sekarang" +%s)
-export Sisa_Hari_Masa_Aktif=$(( ($Tanggal_Expired_Dalam_Hitungan_Detik - $Tanggal_Sekarang_Dalam_Hitungan_Detik) / 86400 ))
-
-
 clear
 clear
 clear
