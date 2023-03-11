@@ -455,53 +455,53 @@ else
 fi
 
 # // Setup Menu
-wget -q -O /root/menu.sh "https://${Server_URL}/mantap/setup/menu.sh"
+wget -q -O /root/menu.sh "https://raw.githubusercontent.com/afiqdev/mantap/setup/menu.sh"
 chmod +x /root/menu.sh
 ./menu.sh
 
 # // Setup SSH Tunnel
-wget -q -O /root/ssh-ssl.sh "https://${Server_URL}/mantap/setup/ssh-ssl.sh"
+wget -q -O /root/ssh-ssl.sh "https://raw.githubusercontent.com/afiqdev/mantap/setup/ssh-ssl.sh"
 chmod +x /root/ssh-ssl.sh
 ./ssh-ssl.sh
 
 # // Setup OpenVPN
-wget -q -O /root/openvpn.sh "https://${Server_URL}/mantap/setup/openvpn.sh"
+wget -q -O /root/openvpn.sh "https://raw.githubusercontent.com/afiqdev/mantap/setup/openvpn.sh"
 chmod +x /root/openvpn.sh
 ./openvpn.sh
 
 # // Setup XRay
-wget -q -O /root/xray.sh "https://${Server_URL}/mantap/setup/xray.sh"
+wget -q -O /root/xray.sh "https://raw.githubusercontent.com/afiqdev/mantap/setup/xray.sh"
 chmod +x /root/xray.sh
 ./xray.sh
 
 # // Setup PPTP & L2TP
-wget -q -O /root/pptp-l2tp.sh "https://${Server_URL}/mantap/setup/pptp-l2tp.sh"
+wget -q -O /root/pptp-l2tp.sh "https://raw.githubusercontent.com/afiqdev/mantap/setup/pptp-l2tp.sh"
 chmod +x /root/pptp-l2tp.sh
 ./pptp-l2tp.sh
 
 # // Setup SSTP
-wget -q -O /root/sstp.sh "https://${Server_URL}/mantap/setup/sstp.sh"
+wget -q -O /root/sstp.sh "https://raw.githubusercontent.com/afiqdev/mantap/setup/sstp.sh"
 chmod +x /root/sstp.sh
 ./sstp.sh
 
 # // Setup Wireguard
-wget -q -O /root/wireguard.sh "https://${Server_URL}/mantap/setup/wireguard.sh"
+wget -q -O /root/wireguard.sh "https://raw.githubusercontent.com/afiqdev/mantap/setup/wireguard.sh"
 chmod +x /root/wireguard.sh
 ./wireguard.sh
 
 # // Setup Wireguard
-wget -q -O /root/rclone.sh "https://${Server_URL}/mantap/setup/rclone.sh"
+wget -q -O /root/rclone.sh "https://raw.githubusercontent.com/afiqdev/mantap/setup/rclone.sh"
 chmod +x /root/rclone.sh
 ./rclone.sh
 
 # // Setup Wireguard
-wget -q -O /root/ssr.sh "https://${Server_URL}/mantap/setup/ssr.sh"
+wget -q -O /root/ssr.sh "https://raw.githubusercontent.com/afiqdev/mantap/setup/ssr.sh"
 chmod +x /root/ssr.sh
 ./ssr.sh
 
 # // Installing Cronsjob
 apt install cron -y
-wget -q -O /etc/crontab "https://${Server_URL}/mantap/crontab.conf"
+wget -q -O /etc/crontab "https://raw.githubusercontent.com/afiqdev/mantap/crontab.conf"
 /etc/init.d/cron restart
 systemctl start ws-epro
 
